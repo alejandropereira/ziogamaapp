@@ -1,35 +1,35 @@
 <%- model_class = Prospect -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>Prospecto</h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dt><strong>Nombre del cliente:</strong></dt>
   <dd><%= @prospect.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:company) %>:</strong></dt>
+  <dt><strong>Empresa:</strong></dt>
   <dd><%= @prospect.company %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+  <dt><strong>Teléfono:</strong></dt>
   <dd><%= @prospect.phone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dt><strong>Dirección:</strong></dt>
   <dd><%= @prospect.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dt><strong>Email:</strong></dt>
   <dd><%= @prospect.email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-  <dd><%= @prospect.state %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:product) %>:</strong></dt>
+  <dt><strong>Interesado:</strong></dt>
+  <dd><%= @prospect.state? ? 'Si' : 'No' %></dd>
+  <dt><strong>Producto de interes:</strong></dt>
   <dd><%= @prospect.product %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @prospect.status %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:comments) %>:</strong></dt>
+  <dt><strong>Cotizado:</strong></dt>
+  <dd><%= @prospect.status? ? 'Si' : 'No' %></dd>
+  <dt><strong>Comentarios:</strong></dt>
   <dd><%= @prospect.comments %></dd>
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
+  <%= link_to "Regresar",
               prospects_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+  <%= link_to "Editar",
               edit_prospect_path(@prospect), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+  <%= link_to "Borrar",
               prospect_path(@prospect),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

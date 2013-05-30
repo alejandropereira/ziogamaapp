@@ -1,5 +1,11 @@
 Ziogama::Application.routes.draw do
+  devise_for :users
+
   resources :prospects
+
+  scope "admin" do
+    resources :users
+  end
 
   root :to => "prospects#index"
 

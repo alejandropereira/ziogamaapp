@@ -1,8 +1,10 @@
 class ProspectsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /prospects
   # GET /prospects.json
   def index
-    @prospects = Prospect.all
+    @prospects = current_user.prospects.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class ProspectsController < ApplicationController
   # GET /prospects/new
   # GET /prospects/new.json
   def new
-    @prospect = Prospect.new
+    @prospect = current_user.prospects.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +42,7 @@ class ProspectsController < ApplicationController
   # POST /prospects
   # POST /prospects.json
   def create
-    @prospect = Prospect.new(params[:prospect])
+    @prospect = current_user.prospects.new(params[:prospect])
 
     respond_to do |format|
       if @prospect.save

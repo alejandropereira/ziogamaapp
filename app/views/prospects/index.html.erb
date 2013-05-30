@@ -1,0 +1,48 @@
+<%- model_class = Prospect -%>
+<div class="page-header">
+  <h1>Prospectos</h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Empresa</th>
+      <th>Teléfono</th>
+      <th>E-mail</th>
+      <th>Interesado</th>
+      <th>Producto de Interes</th>
+      <th>Cotizado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @prospects.each do |prospect| %>
+      <tr>
+        <td><%= prospect.name %></td>
+        <td><%= prospect.company %></td>
+        <td><%= prospect.phone %></td>
+        <td><%= prospect.email %></td>
+        <td><%= prospect.state? ? 'Si' : 'No' %></td>
+        <td><%= prospect.product %></td>
+        <td><%= prospect.status? ? 'Si' : 'No' %></td>
+        <td>
+          <div class="btn-group">
+          <%= link_to "Ver",
+                      prospect, :class => 'btn btn-mini btn-success' %>
+          <%= link_to "Editar",
+                      edit_prospect_path(prospect), :class => 'btn btn-mini' %>
+          <%= link_to "Borrar",
+                      prospect_path(prospect),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Nuevo",
+            new_prospect_path,
+            :class => 'btn btn-primary' %>

@@ -1,14 +1,25 @@
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for @user, :html => { :class => 'form-horizontal', :multipart => true  } do |f| %>
   <%= f.error_notification %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.input :name %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.input :username %>
+  
+  <%= f.input :avatar %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.input :email %>
 
-  <div><%= f.submit "Nuevo" %></div>
+  <%= f.input :role do %>
+  	<%= f.select :role, Role.all.map { |r| [Role.human_attribute_name(r.name), r.name] }, include_blank: true %>
+	<% end %>
+
+  <%= f.input :password %>
+
+  <%= f.input :password_confirmation %>
+
+  <div class="form-actions">
+    <%= f.button :submit , :class => 'btn btn-primary' %>
+    <%= link_to "Cancelar",
+                prospects_path, :class => 'btn' %>
+  </div>
 <% end %>

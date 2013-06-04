@@ -17,11 +17,13 @@
 
   <%= f.input :status, as: :radio_buttons, label: "Cotizado?" %>
 
+  <%= f.input :complete, as: :radio_buttons, label: "Completo?" %>
+
   <%= f.input :comments, label: "Comentarios", input_html: { class: "input-xlarge", rows: "8"} %>
 
 
   <div class="form-actions">
-    <%= f.submit "Ok", :class => 'btn btn-primary' %>
+    <%= f.button :submit , :class => 'btn btn-primary' %>
     <%= link_to "Cancelar",
                 prospects_path, :class => 'btn' %>
   </div>

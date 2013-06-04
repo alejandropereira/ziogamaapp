@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require raphael
+//= require morris
 //= require twitter/bootstrap
 //= require_tree .
 
@@ -43,6 +45,7 @@ $(document).ready(function() {
 		    }
 		}
 	} );
+
 } );
 
 /* Set the defaults for DataTables initialisation */
@@ -192,4 +195,3 @@ if ( $.fn.DataTable.TableTools ) {
 		}
 	} );
 }
-

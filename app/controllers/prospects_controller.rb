@@ -1,10 +1,23 @@
 class ProspectsController < ApplicationController
   before_filter :authenticate_user!
 
+  load_and_authorize_resource
+
   # GET /prospects
   # GET /prospects.json
   def index
-    @prospects = current_user.prospects.all
+
+    # @day_goal = current_user.prospects.today
+    # @week_goal = current_user.prospects.this_week
+
+    # @order = current_user.prospects.group("date(created_at)").select("created_at, count(created_at) as suma")
+
+
+    if current_user.admin? || current_user.sales_manager?
+      @prospects = Prospect.all
+    else
+      @prospects = current_user.prospects.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +59,7 @@ class ProspectsController < ApplicationController
 
     respond_to do |format|
       if @prospect.save
-        format.html { redirect_to @prospect, notice: 'Prospect was successfully created.' }
+        format.html { redirect_to prospects_path , notice: 'Prospect was successfully created.' }
         format.json { render json: @prospect, status: :created, location: @prospect }
       else
         format.html { render action: "new" }

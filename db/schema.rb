@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530225958) do
+ActiveRecord::Schema.define(:version => 20130603213559) do
 
   create_table "prospects", :force => true do |t|
     t.string   "name"
@@ -26,7 +26,25 @@ ActiveRecord::Schema.define(:version => 20130530225958) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.boolean  "complete"
   end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
+
+  create_table "user_roles", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "role_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_roles", ["user_id", "role_id"], :name => "index_user_roles_on_user_id_and_role_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -41,6 +59,10 @@ ActiveRecord::Schema.define(:version => 20130530225958) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "role"
+    t.string   "name"
+    t.string   "username"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

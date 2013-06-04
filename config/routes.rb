@@ -1,9 +1,8 @@
 Ziogama::Application.routes.draw do
   devise_for :users
 
-  resources :prospects
-
   scope "admin" do
+    resources :prospects
     resources :users
   end
 

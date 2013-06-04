@@ -32,6 +32,9 @@ GEM
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
     cancan (1.6.10)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -94,7 +97,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
-    rolify (3.2.0)
+    rmagick (2.13.2)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -103,6 +106,8 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    simple_roles (0.0.12)
+      activerecord (>= 3.1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -133,14 +138,16 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
+  carrierwave
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
   less-rails
   rails (= 3.2.13)
-  rolify
+  rmagick
   sass-rails (~> 3.2.3)
   simple_form
+  simple_roles
   sqlite3
   therubyracer
   twitter-bootstrap-rails

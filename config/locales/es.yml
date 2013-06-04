@@ -128,9 +128,9 @@ es:
     select:
       prompt: Por favor seleccione
     submit:
-      create: Crear %{model}
-      submit: Guardar %{model}
-      update: Actualizar %{model}
+      create: Crear
+      submit: Guardar
+      update: Actualizar
   number:
     currency:
       format:
@@ -188,12 +188,26 @@ es:
     formats:
       default: ! '%A, %d de %B de %Y %H:%M:%S %z'
       long: ! '%d de %B de %Y %H:%M'
-      short: ! '%d de %b %H:%M'
+      short: ! '%d de %b'
     pm: pm
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
   activemodel:
     errors:
       <<: *errors
   activerecord:
+    attributes:
+      user:
+        name: "Nombre"
+        username: "Usuario"
+        role: "Rol"
+        password: "Contraseña"
+        password_confirmation: "Confirmar Contraseña"
+      role:
+        client: "Cliente"
+        admin: "Administrador"
+        sales: "Ventas"
+        sales_manager: "Gerente de Ventas"
+        designer: "Diseñador"
+
     errors:
       <<: *errors

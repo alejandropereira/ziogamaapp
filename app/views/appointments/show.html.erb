@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company:</b>
+  <%= @appointment.company %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @appointment.user_id %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @appointment.details %>
+</p>
+
+<p>
+  <b>Finished at:</b>
+  <%= @appointment.finished_at %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @appointment.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

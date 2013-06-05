@@ -13,11 +13,13 @@ class ProspectsController < ApplicationController
     # @order = current_user.prospects.group("date(created_at)").select("created_at, count(created_at) as suma")
 
 
-    if current_user.admin? || current_user.sales_manager?
-      @prospects = Prospect.all
-    else
-      @prospects = current_user.prospects.all
-    end
+    # if current_user.admin? || current_user.sales_manager?
+    #   @prospects = Prospect.all
+    # else
+    #   @prospects = current_user.prospects.all
+    # end
+
+    @prospects = current_user.prospects.all
 
     respond_to do |format|
       format.html # index.html.erb

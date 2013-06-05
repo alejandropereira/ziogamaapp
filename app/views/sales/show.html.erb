@@ -1,17 +1,8 @@
-<div class="alert alert-info">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <%= day_goal %>
-</div>
-
 <div class="page-header">
-  <h1>Prospectos
-<%= link_to "Nuevo",
-            new_prospect_path,
-            :class => 'btn btn-primary pull-right' %>
-  </h1>
+	<h1><%= @user.name %></h1>
 </div>
 
-<%= content_tag :div, "", id: "graph", data: {orders: current_user.prospects.chart_data} %>
+<%= content_tag :div, "", id: "graph", data: {orders: @user.prospects.chart_data} %>
 
 <table class="table table-striped data">
   <thead>
@@ -28,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @prospects.each do |prospect| %>
+    <% @user.prospects.each do |prospect| %>
       <tr>
         <td><%= prospect.name %></td>
         <td><%= prospect.company %></td>
@@ -55,3 +46,4 @@
     <% end %>
   </tbody>
 </table>
+

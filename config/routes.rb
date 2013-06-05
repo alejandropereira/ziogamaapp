@@ -1,12 +1,27 @@
 Ziogama::Application.routes.draw do
+
   devise_for :users
 
   scope "admin" do
-    resources :prospects
-    resources :users
+    
+    resources :sales, :path => "ventas", :only => [:index, :show]
+
+    scope(:path_names => { :new => "nuevo", :edit => "editar" }) do
+      resources :prospects, :path => "prospectos"
+      resources :users, :path => "usuarios"
+      resources :appointments, :path => "citas" do
+        member do
+           put 'finish'
+        end
+      end
+    end
+
   end
 
   root :to => "prospects#index"
+
+  # get 'ventas', to: 'sales#index'
+  # get 'ventas/:id', to: 'sales#show'
 
 
   # The priority is based upon order of creation:

@@ -10,6 +10,12 @@ jQuery ->
     xkey: 'created_at'
     ykeys: ['countdate']
     labels: ['Prospectos']
+    xLabelFormat: (date) ->
+      return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear()
+    xLabels:'day'
+    dateFormat: (date) ->
+      d = new Date(date) 
+      d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear(); 
 
 $.rails.allowAction = (element) ->
   # The message is something like "Are you sure?"

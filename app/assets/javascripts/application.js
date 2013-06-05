@@ -19,7 +19,7 @@
 
 $(document).ready(function() {
 	$('.data').dataTable({
-		"aaSorting": [[ 4, "desc" ]],
+		"aaSorting": [[ 8, "desc" ]],
 		"oLanguage": {
 		    "sProcessing":     "Procesando...",
 		    "sLengthMenu":     "Mostrar _MENU_ registros",

@@ -1,0 +1,39 @@
+<div class="page-header">
+  <h1>Citas
+<%= link_to "Nuevo",
+            new_appointment_path,
+            :class => 'btn btn-primary pull-right' %>
+  </h1>
+</div>
+
+<%= content_tag :div, "", id: "graph", data: {orders: current_user.appointments.chart_data} %>
+
+<table class="table table-striped data">
+  <thead>
+    <tr>
+      <th>Empresa</th>
+      <th>Inicio</th>
+      <th>Final</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.company %></td>
+        <td><%= appointment.created_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+        <td><%= appointment.finished_at.try(:strftime, "%Y-%m-%d %H:%M") %></td>
+        <td><%= state(appointment.status) %></td>
+        <td>
+        
+            <%= link_to "Terminar Cita", finish_appointment_path(:id => appointment.id), :method => :put, :disabled => appointment.status?, :class => 'btn btn-info' %>
+            <%= link_to 'Ver', appointment, :class => 'btn btn-success' %>
+            <%= link_to 'Editar', edit_appointment_path(appointment), :class => 'btn btn-info' %>
+            <%= link_to 'Borrar', appointment, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger' %>
+          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

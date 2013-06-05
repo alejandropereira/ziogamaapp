@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  company: MyString
+  user_id: 1
+  details: MyText
+  finished_at: 2013-06-04 17:51:05
+  status: false
+
+two:
+  company: MyString
+  user_id: 1
+  details: MyText
+  finished_at: 2013-06-04 17:51:05
+  status: false

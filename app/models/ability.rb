@@ -8,7 +8,7 @@ class Ability
     if user.admin?
         can :manage, :all
     elsif user.sales_manager? || user.sales?
-        can :manage, [Prospect]
+        can :manage, [Prospect, :sales]
     end
 
     # Define abilities for the passed in user here. For example:
